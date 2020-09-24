@@ -7,10 +7,14 @@ pipeline {
       }
     }
     stage("Build") {
-      bat "\"${tool 'MSBuild'}\" SeleniumNUnitParam.sln /p:Configuration=Debug /p:Platform=\"Any CPU\""
+      steps {
+        bat "\"${tool 'MSBuild'}\" SeleniumNUnitParam.sln /p:Configuration=Debug /p:Platform=\"Any CPU\""
+      }
     }
     stage("Test") {
-      bat "C:\tools\nunit-console-runner\tools\nunit3-console.exe SeleniumNUnitParam/bin/Debug/SeleniumNunitParam.dll"
+      steps {
+        bat "C:\tools\nunit-console-runner\tools\nunit3-console.exe SeleniumNUnitParam/bin/Debug/SeleniumNunitParam.dll"
+      }
     }
   }
 }
