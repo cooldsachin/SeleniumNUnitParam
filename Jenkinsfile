@@ -7,11 +7,13 @@ pipeline {
       }
     }
     stage("Build") {
-      script {
+      steps {
+        script {
           def msbuild = tool name: 'MSBuild', type: 'hudson.plugins.msbuild.MsBuildInstallation'
           bat "${msbuild} SeleniumNUnitParam.sln"
-      } 
-    }
+        } 
+      }
+    }  
     stage("Test") {
       steps {
         bat "C:\\tools\\nunit-console-runner\\tools\\nunit3-console.exe SeleniumNUnitParam/bin/Debug/SeleniumNunitParam.dll"
