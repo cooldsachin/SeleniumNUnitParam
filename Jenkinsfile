@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage("restore packages") {
       steps {
-        bat '"C:\tools\nuget.exe" restore SeleniumNUnitParam.sln'
+        bat '"C:\\tools\\nuget.exe" restore SeleniumNUnitParam.sln'
       }
     }
     stage("Build") {
@@ -13,7 +13,7 @@ pipeline {
     }
     stage("Test") {
       steps {
-        bat "C:\tools\nunit-console-runner\tools\nunit3-console.exe SeleniumNUnitParam/bin/Debug/SeleniumNunitParam.dll"
+        bat "C:\\tools\\nunit-console-runner\\tools\\nunit3-console.exe SeleniumNUnitParam/bin/Debug/SeleniumNunitParam.dll"
       }
     }
   }
