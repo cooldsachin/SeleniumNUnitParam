@@ -7,9 +7,10 @@ pipeline {
       }
     }
     stage("Build") {
-      steps {
-        bat "\"${tool 'MSBuild'}\" SeleniumNUnitParam.sln /p:Configuration=Debug /p:Platform=\"Any CPU\""
-      }
+      script {
+          def msbuild = tool name: 'MSBuild', type: 'hudson.plugins.msbuild.MsBuildInstallation'
+          bat "${msbuild} SeleniumNUnitParam.sln"
+      } 
     }
     stage("Test") {
       steps {
